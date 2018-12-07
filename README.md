@@ -39,3 +39,6 @@ Put everything onto an empty USB drive named SONY, plug the usb drive into the p
 If you add a game, navigate to it in the menu, close the console, and then remove said game, upon next boot the console will fail to start. You need to make sure to always shutdown the system with one of the stock games selected.
 
 If you don't want to/don't know how to edit the database file, you can just replace the empty SCUS-94426.cue and SCUS-94426.bin files from this repo with your game (just make sure you keep the same name for the files) and it should work somewhat fine.
+
+# Credits:
+madmonkey, DanTheMan827, skogaby
