@@ -2,6 +2,8 @@
 
 >Disclaimer: this can brick your console. Don't use if you don't understand every piece of how it works.
 
+This uses lolhack, a payload launcher created by madmonkey.
+
 What if PlayStation Classic, but with a game library that's actually fun to play?
 
 # 1. Adding Custom Games:
