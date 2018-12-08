@@ -6,6 +6,9 @@ for D in *; do
     fi
 done
 
+#backup the original db (will not overwrite the file after the first backup)
+cp -n /gaadata/databases/regional.db /media/games/backup.db
+
 #install our custom db
 cp /media/games/custom.db /gaadata/databases/regional.db
 
