@@ -1,22 +1,21 @@
-#link the usb drive dirs into the /gaadata
-cd /media/games
-for D in *; do
-    if [ -d "${D}" ]; then
-        ln -s /media/games/${D} /gaadata/${D}
-    fi
+#!/bin/sh
+
+REGION=$(cat /gaadata/geninfo/REGION|head -1|head -c 8)
+COUNT=1
+COUNT_MAX=30
+
+cp /usr/sony/share/data/databases/regional_${REGION}.db /gaadata/databases/
+echo "Restored DB from: /usr/sony/share/data/databases/regional_${REGION}.db" > /media/uninstall.log
+
+while [ $COUNT -le $COUNT_MAX ]
+do
+if [ -e /gaadata/$COUNT/$COUNT ]; then
+    echo "Wrong symlink detected for game $COUNT, removing" > /media/uninstall.log
+    rm /gaadata/$COUNT/$COUNT
+    COUNT=`expr $COUNT + 1`
+    continue
+fi
+COUNT=`expr $COUNT + 1`
 done
 
-#install our custom db
-cp /media/games/custom.db /gaadata/databases/regional.db
-
-#sync usb drive
 sync
-
-# kill the ui process
-killall ui_menu
-
-# restart ui
-/usr/sony/bin/ui_menu
-
-# sleep forever so the usb is never unmounted
-while :; do sleep 10; done
