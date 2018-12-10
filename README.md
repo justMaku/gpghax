@@ -1,8 +1,15 @@
 # gpghax
 
->Disclaimer: this can brick your console. Don't use if you don't understand every piece of how it works.
 
-What if PlayStation Classic, but with a game library that's actually fun to play?
+🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
+
+Please use https://github.com/pathartl/BleemSync. It's much safer and easier way of injecting custom games.
+
+Please, do not use this. This is unsafe, known to cause issues and was never meant to be end-user friendly.
+If you managed to "brick" your console, please write an issue and I will try to point you to a solution, but please keep in mind that not everything can fixed.
+
+🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
+
 
 # 1. Adding Custom Games:
 
@@ -41,4 +48,6 @@ If you add a game, navigate to it in the menu, close the console, and then remov
 If you don't want to/don't know how to edit the database file, you can just replace the empty SCUS-94426.cue and SCUS-94426.bin files from this repo with your game (just make sure you keep the same name for the files) and it should work somewhat fine.
 
 # Credits:
+This uses lolhack, a payload launcher created by madmonkey.
+
 madmonkey, DanTheMan827, skogaby
