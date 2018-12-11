@@ -1,53 +1,30 @@
-# gpghax
-
-
-🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
-
-Please use https://github.com/pathartl/BleemSync. It's much safer and easier way of injecting custom games.
-
-Please, do not use this. This is unsafe, known to cause issues and was never meant to be end-user friendly.
-If you managed to "brick" your console, please write an issue and I will try to point you to a solution, but please keep in mind that not everything can fixed.
+# gpghax uninstaller
 
 🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
 
+If you're here to inject custom games, go to https://github.com/pathartl/BleemSync. It's much safer and easier way of injecting custom games that actually works.
 
-# 1. Adding Custom Games:
+If you're here because someone told you to use this to inject custom games, **never ever listen** to that person again and go to https://github.com/pathartl/BleemSync. It's much safer and easier way of injecting custom games that actually works.
 
-Open games/custom.db in an SQLite Editor of your choice.
-Add new entry to the GAME table as follows:
-* GAME_ID = numerical identifier, has to be unique
-* GAME_TITLE_STRING = Name of the game
-* PUBLISHER_NAME = self explanatory
-* RELEASE_YEAR = self explanatory
-* PLAYERS = number of players
-* RATING_IMAGE = Has to be CERO_A
-* GAME_MANUAL_QR_IMAGE = Has to be QR_Code_GM
-* LINK_GAME_ID = leave empty
+If you're here because someone told you to use this to inject custom games and you listened to them and now you're console doesn't work anymore, then good news. You're in the right place. But please remember that after you're done fixing your console, never ever listen to that person again and go to https://github.com/pathartl/BleemSync. It's much safer and easier way of injecting custom games that actually works.
 
-Then you have to add the actual disc files to the DB.
-Open DISC table and add new entry per each disc for the game:
-* GAME_ID = GAME_ID from the GAME table
-* DISC_NUMBER = disc number
-* BASENAME = base name for the cue/bin file pair, i.e: SCUS-94426
+🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨
 
-Save that file.
+# Uninstalling gpghax.
 
-Then you have to add actual game files, go to games dir and create a new folder with the GAME_ID from previous steps, i.e 21.
-Inside of that directory you need to put at least those files:
-* BASENAME.cue (use the BASENAME value from the DISC table, i.e SCUS-94426.cue)
-* BASENAME.bin (use the BASENAME value from the DISC table, i.e SCUS-94426.bin)
-* BASENAME.png (use the BASENAME value from the DISC table, i.e SCUS-94426.png)
-* pcsx.cfg (use the default one from the sample game with id 21)
-
-# Running:
-Put everything onto an empty USB drive named SONY, plug the usb drive into the port 2 and reboot the system. If everything worked fine, you should see your custom game in the menu.
-
-# NOTES:
-If you add a game, navigate to it in the menu, close the console, and then remove said game, upon next boot the console will fail to start. You need to make sure to always shutdown the system with one of the stock games selected.
-
-If you don't want to/don't know how to edit the database file, you can just replace the empty SCUS-94426.cue and SCUS-94426.bin files from this repo with your game (just make sure you keep the same name for the files) and it should work somewhat fine.
+* Format an USB drive to FAT32 with a label SONY
+* Download this repository and put all the files in the root folder of the USB drive.
+* If you use Japanese/Taiwan/Hong Kong model of the console, you will have to remove the `databases/default.db` file and rename the `databases/default_jp.db` to `databases/default.db`, otherwise you will end up with non-working US games on your JP system.
+* Turn off the PlayStation Classic
+* Plug the USB drive into the PlayStation Classic
+* Turn on the console
+* After few seconds the power LED should start blinking and the TV should go black.
+* Remove the power cable from the console.
+* Remove the USB drive from the console.
+* Insert power cable into the console.
+* Start the console again, if everything went right, you should have restored the console to the factory state, retaining all the save files.
+* If above didn't work, open a new issue and attach the `uninstall.log` and `filelist.log` from the root folder of the USB drive.
+* If it did, congratulations! Now, format the USB drive again, go to https://github.com/pathartl/BleemSync and use that. It's much safer and easier way of injecting custom games that actually works.
 
 # Credits:
-This uses lolhack, a payload launcher created by madmonkey.
-
-madmonkey, DanTheMan827, skogaby
+This uses lolhack, a payload launcher created by madmonkey. Extra help was provided DanTheMan827, skogaby and others from ModMyClassic Discord.

@@ -1,21 +1,39 @@
 #!/bin/sh
+LOG=/media/uninstall.log
 
-REGION=$(cat /gaadata/geninfo/REGION|head -1|head -c 8)
+# Remount with write access
+mount -o rw,remount /gaadata
+
+# Clear log
+echo "" > $LOG
+
+find /gaadata > /media/filelist.log
+
+# Remove user settings file, system will recreate it on the next boot.
+rm /data/AppData/sony/ui/user.pre
+
+# Restore default DB
+if [ -e /media/databases/default.db  ]; then
+    cp /media/databases/default.db /gaadata/databases/regional.db
+    
+    echo "Restored default DB" >> $LOG
+else
+    echo "Missing default database file." > $LOG
+fi
+
 COUNT=1
-COUNT_MAX=30
-
-cp /usr/sony/share/data/databases/regional_${REGION}.db /gaadata/databases/
-echo "Restored DB from: /usr/sony/share/data/databases/regional_${REGION}.db" > /media/uninstall.log
-
+COUNT_MAX=25
+# Remove broken symlinks
 while [ $COUNT -le $COUNT_MAX ]
 do
-if [ -e /gaadata/$COUNT/$COUNT ]; then
-    echo "Wrong symlink detected for game $COUNT, removing" > /media/uninstall.log
-    rm /gaadata/$COUNT/$COUNT
+    echo "Checking wrong symlinks for game $COUNT" >> $LOG
+    if [ -e /gaadata/$COUNT/$COUNT ]; then
+        echo "Wrong symlink detected for game $COUNT, removing" >> $LOG
+        rm -rf /gaadata/$COUNT/$COUNT
+    else
+        echo "Nothing wrong with game $COUNT, continuing" >> $LOG
+    fi
     COUNT=`expr $COUNT + 1`
-    continue
-fi
-COUNT=`expr $COUNT + 1`
 done
 
-sync
+shutdown -h now
