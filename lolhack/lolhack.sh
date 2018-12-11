@@ -21,19 +21,26 @@ else
     echo "Missing default database file." > $LOG
 fi
 
-COUNT=1
-COUNT_MAX=25
-# Remove broken symlinks
-while [ $COUNT -le $COUNT_MAX ]
-do
-    echo "Checking wrong symlinks for game $COUNT" >> $LOG
-    if [ -e /gaadata/$COUNT/$COUNT ]; then
-        echo "Wrong symlink detected for game $COUNT, removing" >> $LOG
-        rm -rf /gaadata/$COUNT/$COUNT
-    else
-        echo "Nothing wrong with game $COUNT, continuing" >> $LOG
-    fi
-    COUNT=`expr $COUNT + 1`
-done
+# Remove fucked up symlinks.
+rm /gaadata/1/1
+rm /gaadata/2/2
+rm /gaadata/3/3
+rm /gaadata/4/4
+rm /gaadata/5/5
+rm /gaadata/6/6
+rm /gaadata/7/7
+rm /gaadata/8/8
+rm /gaadata/9/9
+rm /gaadata/10/10
+rm /gaadata/11/11
+rm /gaadata/12/12
+rm /gaadata/13/13
+rm /gaadata/14/14
+rm /gaadata/15/15
+rm /gaadata/16/16
+rm /gaadata/17/17
+rm /gaadata/18/18
+rm /gaadata/19/19
+rm /gaadata/20/20
 
 shutdown -h now
